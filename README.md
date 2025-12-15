@@ -64,21 +64,6 @@ Edit `.env` to adjust:
 - `SIMILARITY_THRESHOLD`: Minimum similarity score for replacement (0.0-1.0, default: 0.7)
 - `EMBEDDING_MODEL`: OpenAI embedding model to use
 
-## Alternative Study Ideas
-
-Here are some other fun ways to study GRE vocabulary:
-
-1. **Flashcard Generator**: Create Anki decks from your word list
-2. **Context Clue Trainer**: Generate sentences with GRE words and practice inferring meanings
-3. **Word Association Game**: Build a graph of semantically related words
-4. **Daily Reading Challenge**: Replace words in news articles or blog posts
-5. **Story Generator**: Use GPT to create short stories using specific GRE words
-6. **Spaced Repetition Bot**: A chatbot that quizzes you on words at optimal intervals
-7. **Pronunciation Practice**: Audio flashcards with word definitions
-8. **Etymology Explorer**: Visualize word roots and origins
-9. **Synonym/Antonym Trainer**: Practice finding relationships between words
-10. **Writing Prompts**: Generate prompts that require using specific GRE words
-
 ## Notes
 
 - The first run will take longer as it builds the vector database
