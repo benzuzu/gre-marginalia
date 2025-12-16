@@ -15,41 +15,32 @@ A fun tool that intelligently inserts GRE vocabulary words into your favorite bo
 
 1. **Install dependencies**:
 
+Python 3.9+ is required.
+
 ```bash
 pip install -r requirements.txt
 ```
 
 2. **Set up environment variables**:
-   Create a `.env` file in the project root:
-
-```
-OPENAI_API_KEY=your_openai_api_key_here
-EMBEDDING_MODEL=text-embedding-3-small
-MAX_REPLACEMENTS_PER_PARAGRAPH=3
-SIMILARITY_THRESHOLD=0.7
-```
+   Create a `.env` file in the project root. `.env.example` has all the required variables. You will need to setup openai, gemini, and chromadb accounts.
 
 3. **Prepare your files**:
 
 - `vocab_mixed.csv`: Contains GRE words in CSV format (semicolon-delimited, word;definition) - already included
-- Your book text file: A `.txt` file of the book you want to enhance
+- Your book text file: A `.txt` file of the book you want to enhance. Examples are provided in `books/`
 
 ## Usage
 
 ```bash
-python gre_vocab_tool.py your_book.txt --output enhanced_book.txt
+python main.py books/your_book.txt
 ```
 
 Options:
 
 - `--gre-words`: Path to GRE words file (default: `vocab_mixed.csv`). Supports CSV (semicolon-delimited) or plain text (one word per line)
-- `--output`: Output file name (default: `enhanced_book.txt`)
+- `--output`: Output file path (default: `modifie_books/<input_file>`)
 
 ## Example
-
-```bash
-python gre_vocab_tool.py harry_potter.txt --output harry_potter_gre.txt
-```
 
 ## How It Works Internally
 
@@ -63,12 +54,11 @@ python gre_vocab_tool.py harry_potter.txt --output harry_potter_gre.txt
 Edit `.env` to adjust:
 
 - `MAX_REPLACEMENTS_PER_PARAGRAPH`: How many words to replace per paragraph (default: 3)
-- `SIMILARITY_THRESHOLD`: Minimum similarity score for replacement (0.0-1.0, default: 0.7)
-- `EMBEDDING_MODEL`: OpenAI embedding model to use
+- `SIMILARITY_THRESHOLD`: Minimum similarity score for replacement (-1 -> 1, default -.3)
 
 ## Notes
 
 - The first run will take longer as it builds the vector database
 - Subsequent runs reuse the existing database
 - Processing time depends on book length and API rate limits
-- Make sure you have sufficient OpenAI API credits
+- Make sure you have sufficient OpenAI, Gemini, ChromaDB API credits
