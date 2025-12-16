@@ -223,7 +223,7 @@ Return ONLY the enhanced paragraph with your addition. Do not include any explan
             # Find and wrap the GRE word with asterisks (case-insensitive, whole word match)
             # Use word boundaries to match whole words only
             pattern = r'\b' + re.escape(gre_word) + r'\b'
-            enhanced = re.sub(pattern, f'*{gre_word}*', enhanced, flags=re.IGNORECASE)
+            enhanced = re.sub(pattern, f'**{gre_word}**', enhanced, flags=re.IGNORECASE)
             
             print("MODIFIED PARAGRAPH:", enhanced, "\n-----------------------------------")
             return enhanced
@@ -292,9 +292,17 @@ def main():
     parser = argparse.ArgumentParser(description='GRE Vocabulary Study Tool')
     parser.add_argument('input_file', help='Input book text file')
     parser.add_argument('--gre-words', default='vocab_mixed.csv', help='File containing GRE words (CSV with semicolon delimiter or plain text, one per line)')
-    parser.add_argument('--output', default='enhanced_book.txt', help='Output file for enhanced book')
-    
+    parser.add_argument('--output', default=None, help='Output file for enhanced book')
+
     args = parser.parse_args()
+
+    # Set default output path if not provided
+    if args.output is None:
+        # Create modified_books directory if it doesn't exist
+        os.makedirs('modified_books', exist_ok=True)
+        # Get basename of input file and create output path
+        input_basename = os.path.basename(args.input_file)
+        args.output = os.path.join('modified_books', input_basename)    
     
     tool = GREVocabTool()
     tool.process_book(args.input_file, args.output, args.gre_words)

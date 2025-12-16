@@ -1,13 +1,15 @@
 # GRE Vocabulary Study Tool
 
-A fun tool that intelligently inserts GRE vocabulary words into your favorite books based on semantic similarity. Read Harry Potter (or any book) while learning GRE words!
+A fun tool that intelligently inserts GRE vocabulary words into your favorite books based on semantic similarity. Read The Great Gatsby (or any book) while learning GRE words!
 
 ## How It Works
 
 1. **Text Processing**: Splits your book into paragraphs
 2. **Embeddings**: Uses OpenAI's embedding API to create vector representations of each paragraph
 3. **Semantic Matching**: Cross-references paragraph embeddings with a vector database of GRE words
-4. **Smart Replacement**: Replaces appropriate words in paragraphs with semantically similar GRE vocabulary
+4. **Smart Insertion**: Inserts appropriate words in paragraphs with semantically similar GRE vocabulary, via an in-context sentence or phrase.
+
+### Example (Great Gatsby)
 
 ## Setup
 

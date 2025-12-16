@@ -1,7 +1,6 @@
 .env
 chroma_db/
 *.txt
-!gre_words.txt
 __pycache__/
 *.pyc
 *.pyo
